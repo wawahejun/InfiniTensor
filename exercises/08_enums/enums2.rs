@@ -4,6 +4,7 @@ struct Point {
     y: u64,
 }
 
+#[derive(Debug)]
 enum Message {
     Resize {
         width: u64,

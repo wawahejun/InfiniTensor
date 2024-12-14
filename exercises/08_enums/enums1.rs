@@ -1,8 +1,8 @@
 #[derive(Debug)]
 enum Message {
-    Quit,
-    Echo,
+    Resize,
     Move,
+    Echo,
     ChangeColor,
     Quit
 }
