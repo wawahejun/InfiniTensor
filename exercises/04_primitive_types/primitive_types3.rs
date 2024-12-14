@@ -1,4 +1,5 @@
 fn main() {
+    let a = [1; 666];
     // TODO: Create an array called `a` with at least 100 elements in it.
     // let a = ???
 
