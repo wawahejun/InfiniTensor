@@ -2,7 +2,7 @@
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
     vec.push(88);
 
-    vec.clone
+    vec.clone()
 }
 
 fn main() {

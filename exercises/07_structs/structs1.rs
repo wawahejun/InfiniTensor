@@ -4,6 +4,7 @@ struct ColorRegularStruct {
     blue: u8,
 }
 
+
 struct ColorTupleStruct(u8,u8,u8);
 
 #[derive(Debug)]
@@ -20,7 +21,7 @@ mod tests {
     #[test]
     fn regular_structs() {
         // TODO: Instantiate a regular struct.
-        let green = ColorClassicStruct {
+        let green = ColorRegularStruct {
             red: 0,
             green: 255,
             blue: 0,
