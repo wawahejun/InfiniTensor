@@ -9,7 +9,6 @@ struct Person {
     age: u8,
 }
 
-
 // We implement the Default trait to use it as a fallback when the provided
 // string is not convertible into a `Person` object.
 impl Default for Person {
@@ -35,22 +34,24 @@ impl Default for Person {
 // 5. Parse the second element from the split operation into a `u8` as the age.
 // 6. If parsing the age fails, return the default of `Person`.
 impl From<&str> for Person {
-    fn from(s: &str) -> Person {
-        if s.is_empty() || s.split(',').next().is_none() {
+    fn from(s: &str) -> Self {
+        let parts: Vec<&str> = s.split(',').collect();
+        if parts.len() != 2 {
             return Person::default();
         }
-        let parts: Vec<&str> = s.split(',').collect();
-        match parts.as_slice() {
-            [name, age] if !name.is_empty() => {
-                match age.parse::<usize>() {
-                    Ok(age) => Person {
-                        name: name.to_string(),
-                        age,
-                    },
-                    Err(_) => Person::default(),
-                }
+
+        let name = parts[0];
+        if name.is_empty() {
+            return Person::default();
+        }
+
+        let age = parts[1].parse::<u8>();
+        match age {
+            Ok(age) => Person {
+                name: name.to_string(),
+                age,
             },
-            _ => Person::default(),
+            Err(_) => Person::default(),
         }
     }
 }

@@ -20,6 +20,9 @@ fn calculate_price_of_apples(number: i32) -> i32 {
         number * 2
     }
 }
+fn main() {
+}
+
 // Don't change the tests!
 #[cfg(test)]
 mod tests {
@@ -33,3 +36,4 @@ mod tests {
         assert_eq!(calculate_price_of_apples(65), 65);
     }
 }
+

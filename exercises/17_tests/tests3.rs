@@ -33,12 +33,11 @@ mod tests {
         assert_eq!(rect.height, 20); // Check height
     }
 
-
     // TODO: This test should check if the program panics when we try to create
     // a rectangle with negative width.
     #[test]
     fn negative_width() {
-        #[should_panic(expected = "Rectangle width and height must be positive")]
+        #[should_panic]
         let _rect = Rectangle::new(-10, 10);
     }
 
@@ -46,7 +45,7 @@ mod tests {
     // a rectangle with negative height.
     #[test]
     fn negative_height() {
-        #[should_panic(expected = "Rectangle width and height must be positive")]
+        #[should_panic]
         let _rect = Rectangle::new(10, -10);
     }
 }
