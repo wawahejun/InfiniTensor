@@ -6,10 +6,10 @@
 // of `Option<String>`.
 fn generate_nametag_text(name: String) -> Option<String> {
     if name.is_empty() {
-        // Empty names aren't allowed
-        None
+        // Empty names aren't allowed.
+        Err("`name` was empty; it must be nonempty.".into())
     } else {
-        Some(format!("Hi! My name is {name}"))
+        Ok(format!("Hi! My name is {}", name))
     }
 }
 
