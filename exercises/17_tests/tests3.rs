@@ -37,6 +37,7 @@ mod tests {
     // a rectangle with negative width.
     #[test]
     fn negative_width() {
+        #[should_panic(expected = "Rectangle width and height must be positive")]
         let _rect = Rectangle::new(-10, 10);
     }
 
@@ -44,6 +45,7 @@ mod tests {
     // a rectangle with negative height.
     #[test]
     fn negative_height() {
+        #[should_panic(expected = "Rectangle width and height must be positive")]
         let _rect = Rectangle::new(10, -10);
     }
 }
