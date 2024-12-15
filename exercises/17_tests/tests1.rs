@@ -11,6 +11,7 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
     // TODO: Import `is_even`. You can use a wildcard to import everything in
     // the outer module.
 

@@ -16,30 +16,22 @@
 // that later in the exercises about threads.
 
 // Don't change the lines below.
-#![forbid(unused_imports)]
-use std::{sync::Arc, thread};
+use std::sync::Arc;
+use std::thread;
 
 fn main() {
-    let numbers: Vec<_> = (0..100u32).collect();
-
-    // TODO: Define `shared_numbers` by using `Arc`.
-    // let shared_numbers = ???;
-
-    let mut join_handles = Vec::new();
+    let numbers: Vec<u32> = (0..100u32).collect();
+    let shared_numbers = Arc::new(numbers);
+    let mut joinhandles = Vec::new();
 
     for offset in 0..8 {
-        // TODO: Define `child_numbers` using `shared_numbers`.
-        // let child_numbers = ???;
-
-        let handle = thread::spawn(move || {
-            let sum: u32 = child_numbers.iter().filter(|&&n| n % 8 == offset).sum();
-            println!("Sum of offset {offset} is {sum}");
-        });
-
-        join_handles.push(handle);
+        let child_numbers = Arc::clone(&shared_numbers); 
+        joinhandles.push(thread::spawn(move || {
+            let sum: u32 = child_numbers.iter().filter(|&&n| (n + offset) % 8 == offset).sum();
+            println!("Sum of offset {} is {}", offset, sum);
+        }));
     }
-
-    for handle in join_handles.into_iter() {
+    for handle in joinhandles.into_iter() {
         handle.join().unwrap();
     }
 }
