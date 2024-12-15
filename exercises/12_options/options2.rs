@@ -31,7 +31,7 @@ mod tests {
         // adds another layer of `Option`. You can do nested pattern matching
         // in if-let and while-let statements.
         while let Some(integer) = optional_integers.pop() {
-            assert_eq!(integer, cursor);
+            assert_eq!(integer, Some(cursor));
             cursor -= 1;
         }
 

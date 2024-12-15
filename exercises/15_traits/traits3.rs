@@ -4,6 +4,8 @@ trait Licensed {
     // without repeating the function.
     // The default license information should be the string "Default license".
     fn licensing_info(&self) -> String;
+    "Default license".to_string()
+
 }
 
 struct SomeSoftware {
